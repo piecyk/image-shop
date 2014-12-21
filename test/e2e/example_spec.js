@@ -9,12 +9,13 @@ var expect = chai.expect;
 describe('E2E: Example', function() {
 
   beforeEach(function() {
-    browser.get('/');
+    browser.get('/#/');
     browser.waitForAngular();
   });
 
   it('should route correctly', function() {
-    expect(browser.getLocationAbsUrl()).to.eventually.equal('/home');
+    expect(browser.getLocationAbsUrl()).to.eventually.equal('/');
+    //browser.pause();
   });
 
 });

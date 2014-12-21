@@ -3,6 +3,7 @@
 module.exports = {
 
   'serverport': 3000,
+  'baseUrl': 'image-shop',
 
   'styles': {
     'src' : 'src/styles/**/*.scss',

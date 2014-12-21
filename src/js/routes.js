@@ -3,13 +3,10 @@
 /**
  * @ngInject
  */
-function Routes($locationProvider, $urlRouterProvider) {
+function Routes($locationProvider) {
 
-  $locationProvider.html5Mode(true);
-  $urlRouterProvider.when("/", [ "$state", function ($state) {
-    $state.transitionTo("home", {}, false);
-  } ]);
-  
+  // TODO: fix gh-page dont work with this url
+  // $locationProvider.html5Mode(true).hashPrefix("#");
 }
 
 module.exports = Routes;

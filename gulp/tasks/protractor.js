@@ -13,11 +13,13 @@ gulp.task('protractor', ['webdriver-update', 'webdriver', 'server'], function() 
 
   return gulp.src('./thisdoesntexist')
     .pipe(protractor({
-        configFile: config.test.protractor
+      configFile: config.test.protractor,
+      action: "run"
     }))
     .on('error', function(err) {
       // Make sure failed tests cause gulp to exit non-zero
       throw err;
-    });
+    })
+  ;
 
 });
