@@ -16,8 +16,6 @@ function homeClickDir() {
     restrict: 'A',
     link: function($scope, $element) {
       $element.on('click', function() {
-        console.log('element clicked');        
-        console.log(R.map(double, [1, 2, 3]));
       });
     }
   };

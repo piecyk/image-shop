@@ -7,12 +7,10 @@ var homeModule = require('./_index');
  * @ngInject
  */
 function cartDir() {
-  //console.log('cartDir:fn');
 
   var link = function(scope) {
-    console.log('cartDir:link:scope', scope.cart);    
   };
- 
+
   return {
     restrict: 'A',
     templateUrl: 'js/home/cartDir.tpl.html',
