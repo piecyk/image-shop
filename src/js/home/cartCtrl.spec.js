@@ -2,7 +2,7 @@
 
 'use strict';
 
-var h = require('../../../test/helpers.js');
+var h = require('../../../test/helpers');
 
 describe('home:ctrl:cartCtrl', function () {
 

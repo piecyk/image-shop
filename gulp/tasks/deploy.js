@@ -20,5 +20,5 @@ gulp.task('exitBrowserSync', function() {
 });
 
 gulp.task('deploy', function() {
-  runSequence('unit', 'protractor', 'prod', 'deployToGhPages', 'exitBrowserSync');
+  runSequence('views', 'unit', 'protractor', 'prod', 'deployToGhPages', 'exitBrowserSync');
 });

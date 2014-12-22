@@ -8,8 +8,8 @@ module.exports = angular.module('home', [
 angular.module('home').config(require('./homeRoutes'));
 
 // Define the list
-require('./homeCtrl.js');
-require('./homeClickDir.js');
+require('./homeCtrl');
+require('./homeClickDir');
 
-require('./cartDir.js');
-require('./cartCtrl.js');
+require('./cartDir');
+require('./cartCtrl');

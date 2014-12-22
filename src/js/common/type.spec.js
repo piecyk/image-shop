@@ -1,6 +1,6 @@
 'use strict';
 
-var type = require('./type.js');
+var type = require('./type');
 
 describe('common:Type', function () {
 
