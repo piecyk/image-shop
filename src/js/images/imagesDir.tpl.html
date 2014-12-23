@@ -1,0 +1,16 @@
+<div>
+
+  Search images to buy: <input type="text"
+                               name="is-images-query"
+                               ng-model="images.query"
+                               ng-change="images.queryChange(images.query)"
+                               ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 500} }"
+                               />
+  <br /><br />
+  <span ng-repeat="list in images.list track by $index">
+    <img ng-src="{{list.url}}"/>
+  </span>
+  <span ng-show="images.list.length===0">
+    Sorry no results found...
+  </span>
+</div>

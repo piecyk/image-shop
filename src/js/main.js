@@ -6,6 +6,7 @@ var angular = require('angular');
 require('angular-ui-router');
 require('./templates');
 require('./home/_index');
+require('./images/_index');
 
 // create and bootstrap application
 angular.element(document).ready(function() {
@@ -13,8 +14,9 @@ angular.element(document).ready(function() {
   var requires = [
     'ui.router',
     'templates',
-    
-    'home'
+
+    'home',
+    'is-images'
   ];
 
   // mount on window for testing
@@ -24,5 +26,5 @@ angular.element(document).ready(function() {
   angular.module('app').config(require('./routes'));
 
   angular.bootstrap(document, ['app']);
-  
+
 });
