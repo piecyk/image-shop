@@ -11,8 +11,9 @@ exports.config = {
   framework: 'mocha',
   mochaOpts:{
     reporter: 'spec',
-    slow: 3000
-    //, enableTimeouts: false
+    timeout: 4000,
+    slow: 3000,
+    enableTimeouts: false
   },
   specs: [
     'e2e/**/*.js'
