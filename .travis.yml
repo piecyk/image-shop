@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 0.10
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm install -g gulp
+
+script:
+  - gulp test
+
+env:
+ global:
+  - GH_REF: github.com/piecyk/image-shop.git
+  - secure: "G+MK+ZKQ8J47CHHoFl/11JIEq4JZrJX2XOOf5TbI4l/bBSvzCrUOqNQUL4FlIE+BT9UjIsQd9K6htmYOj/YKRZxoBNybdTz30BHHeUCAeY8+Mwyr0RlNzWQYH02Pejt+8f4VSBnufJrLre28Wfm8FRpLxfVLpLJ0Dii6hT4ZSeU="

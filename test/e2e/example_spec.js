@@ -15,7 +15,6 @@ describe('E2E: Example', function() {
 
   it('should route correctly', function() {
     expect(browser.getLocationAbsUrl()).to.eventually.equal('/');
-    //browser.pause();
   });
 
 });

@@ -8,17 +8,16 @@ var homeModule = require('./_index');
  */
 function cartCtrl() {
   var vm = this;
-  //console.log('cartCtrl', vm);
 
   vm.label = vm.label || '123';
   vm.cart = {};
-  
+
   vm.add = function(id) {
-    console.log(id);
+    return id + 1;
   };
-  
+
   vm.remove = function(id) {
-    return id;    
+    return id;
   };
 }
 homeModule.controller('cartCtrl', cartCtrl);

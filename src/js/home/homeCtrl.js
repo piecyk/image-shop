@@ -11,7 +11,6 @@ function homeCtrl() {
 
   vm.test = 123;
   vm.go = function(array) {
-    console.log('home', vm);
 
     var spacer = R.join(' ');
     return spacer(array);
