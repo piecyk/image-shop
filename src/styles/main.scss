@@ -7,3 +7,15 @@ body {
   background-color: $background--light;
   padding: $half-space;
 }
+
+.demo-content {
+  position: relative;
+  overflow:hidden;
+  min-height: 448px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}

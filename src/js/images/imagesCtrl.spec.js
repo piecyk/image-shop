@@ -2,6 +2,7 @@
 
 'use strict';
 
+
 describe('images:ctrl:imagesCtrl', function () {
 
   var imagesCtrl;
@@ -17,6 +18,11 @@ describe('images:ctrl:imagesCtrl', function () {
 
   it('should exist', function() {
     expect(imagesCtrl).to.exist();
+  });
+
+  it('should queryChange to exist an be a Function', function() {
+    expect(imagesCtrl.queryChange).to.exist();
+    expect(imagesCtrl.queryChange).to.be.a('Function');
   });
 
   it('should check queryChange', function() {

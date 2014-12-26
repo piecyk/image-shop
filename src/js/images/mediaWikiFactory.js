@@ -1,7 +1,8 @@
 'use strict';
 
-var homeModule = require('./_index');
+var module = require('./_index');
 var R = require('ramda');
+var Type = require('../common/type');
 
 
 /**
@@ -17,7 +18,6 @@ function mediaWikiFactory($http, $q) {
   var WIKIPEDIA_URL = 'en.wikipedia.org/w/api.php';
 
   self.query = function(query) {
-
     if (R.isEmpty(query)) {
       return $q.when([]);
     }
@@ -34,11 +34,25 @@ function mediaWikiFactory($http, $q) {
         , aiprop: 'url|dimensions|mime'
         , aifrom: query
       }
-    }).then(function(response){
-      return self.images = response.data.query.allimages;
+    }).then(querySuccess, queryError);
+  };
+
+  function querySuccess(response) {
+    return self.images = Type.set(response.data.query.allimages, 'array');
+  }
+
+  function queryError(response) {   
+    //TODO: called asynchronously if an error occurs or server returns response with an error status.
+    return response;
+  }
+
+  self.____unit = function() {
+    return angular.extend(self, {
+      querySuccess: querySuccess,
+      queryError: queryError
     });
   };
 
   return self;
 }
-homeModule.factory('mediaWikiFactory', mediaWikiFactory);
+module.factory('mediaWikiFactory', mediaWikiFactory);

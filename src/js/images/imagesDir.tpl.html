@@ -7,10 +7,29 @@
                                ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 500} }"
                                />
   <br /><br />
-  <span ng-repeat="list in images.list track by $index">
-    <img ng-src="{{list.url}}"/>
-  </span>
+
+  <div layout="row"
+       layout-margin
+       layout-fill
+       layout-padding>
+
+    <div flex
+         style="background-color: #ffffff;"
+         ng-repeat="list in images.list track by $index">
+
+      <img ng-src="{{list.url}}"
+           width="128"
+           height="128"
+           image-on-load-dir/>
+    </div>
+
+  </div>
+
+  <!-- <span ng-repeat="list in images.list track by $index"> -->
+  <!--   <img ng-src="{{list.url}}"/> -->
+  <!-- </span> -->
   <span ng-show="images.list.length===0">
     Sorry no results found...
   </span>
+
 </div>
