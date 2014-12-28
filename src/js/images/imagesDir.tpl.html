@@ -1,35 +1,25 @@
 <div>
+  Search images:
+  <input type="text"
+         name="is-images-query"
+         ng-model="images.query"
+         ng-change="images.queryChange(images.query)"
+         ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 500} }"
+         />
 
-  Search images to buy: <input type="text"
-                               name="is-images-query"
-                               ng-model="images.query"
-                               ng-change="images.queryChange(images.query)"
-                               ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 500} }"
-                               />
-  <br /><br />
-
-  <div layout="row"
-       layout-margin
-       layout-fill
-       layout-padding>
-
-    <div flex
-         style="background-color: #ffffff;"
-         ng-repeat="list in images.list track by $index">
-
-      <img ng-src="{{list.url}}"
-           width="128"
-           height="128"
-           image-on-load-dir/>
+  <div class="images-list-wrapper">
+	  <div class="images-list-columns">
+		  <div class="images-list-pin" ng-repeat="image in images.list track by image.sha1">
+			  <img ng-src="{{image.url}}" image-on-load-dir/>
+        <p>
+          {{::1 | currency}}
+          <button ng-click="images.buy(image)">Buy</button>
+			  </p>
+		  </div>
     </div>
-
+    <span ng-show="images.list.length===0">
+      Sorry no results found...
+    </span>
   </div>
-
-  <!-- <span ng-repeat="list in images.list track by $index"> -->
-  <!--   <img ng-src="{{list.url}}"/> -->
-  <!-- </span> -->
-  <span ng-show="images.list.length===0">
-    Sorry no results found...
-  </span>
 
 </div>

@@ -22,7 +22,6 @@ angular.element(document).ready(function() {
   // mount on window for testing
   window.app = angular.module('app', requires);
 
-  angular.module('app').constant('AppSettings', require('./appSettings'));
   angular.module('app').config(require('./routes'));
   angular.module('app').run(require('./run'));
 

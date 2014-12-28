@@ -27,7 +27,8 @@ describe('images:directive:imageOnLoadDir', function () {
     var html = '<img ng-src="https://www.google.pl/logos/doodles/2014/holidays-2014-day-4-5729804556959744.3-vacta.jpg" image-on-load-dir/>';
     var element = compileElem(html);
     var $scope = element.scope();
-    //TODO: impl
+
+    expect($scope).to.exist();
     done();
   });
 

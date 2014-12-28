@@ -1,8 +1,9 @@
 'use strict';
 
-var module = require('./_index');
+var aModule = require('./_index');
 var R = require('ramda');
 var Type = require('../common/type');
+var appSettings = require('../appSettings');
 
 
 /**
@@ -11,43 +12,53 @@ var Type = require('../common/type');
 function mediaWikiFactory($http, $q) {
   var self = this;
 
-  self.images = null;
-
-  // hack for CORS in gh-pages
-  var CROS_PROXY_URL = 'http://www.corsproxy.com/';
-  var WIKIPEDIA_URL = 'en.wikipedia.org/w/api.php';
+  self.images = [];
+  self.lastContinue = '';
 
   self.query = function(query) {
+
     if (R.isEmpty(query)) {
-      return $q.when([]);
+      return $q.when(setImagesAndReturnNewArray());
     }
 
     // http://www.mediawiki.org/wiki/API:Allimages
-    return $http({
-      url : CROS_PROXY_URL + WIKIPEDIA_URL,
-      method : "GET",
+    var config = {
+      url : appSettings.WIKIPEDIA_API_URL,
+      method : 'GET',
       params: {
         action: 'query'
         , format: 'json'
         , list: 'allimages'
         , ailimit: 20
-        , aiprop: 'url|dimensions|mime'
+        , aiprop: 'url|dimensions|mime|sha1'
         , aifrom: query
+        //, continue: self.lastContinue
       }
-    }).then(querySuccess, queryError);
+    };
+
+    return $http(config).then(querySuccess, queryError);
   };
 
-  function querySuccess(response) {
-    return self.images = Type.set(response.data.query.allimages, 'array');
+  function setImagesAndReturnNewArray(array) {
+    self.images = Type.set(array || [], 'array');
+    // return array
+    return self.images;
   }
 
-  function queryError(response) {   
+  function querySuccess(response) {
+    //TODO: use lastContinue add infinite scroll
+    //self.lastContinue = Type.set(response.data.continue, 'object');
+
+    return setImagesAndReturnNewArray(response.data.query.allimages);
+  }
+
+  function queryError(response) {
     //TODO: called asynchronously if an error occurs or server returns response with an error status.
     return response;
   }
 
   self.____unit = function() {
-    return angular.extend(self, {
+    return R.mixin(self, {
       querySuccess: querySuccess,
       queryError: queryError
     });
@@ -55,4 +66,4 @@ function mediaWikiFactory($http, $q) {
 
   return self;
 }
-module.factory('mediaWikiFactory', mediaWikiFactory);
+aModule.factory('mediaWikiFactory', mediaWikiFactory);

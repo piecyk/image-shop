@@ -6,22 +6,21 @@
  */
 'use strict';
 
-var module = require('./_index');
+var aModule = require('./_index');
 
 
 /**
  * @ngInject
  */
 function imageOnLoadDir() {
-  function link(scope, element, attrs) {
-    scope.time = null;
-    var start = new Date();
+  function link(scope, element) {
+
+    element.on('click', function() {
+      console.log('click');
+    });
 
     element.bind('load', function() {
-      var end = new Date();
-      scope.time = end.getTime() - start.getTime();
-      //TODO: for dev to see time, later add spiner here
-      console.log('image is loaded time: ', scope.time);
+      //console.log('image is loaded');
     });
   }
 
@@ -31,4 +30,4 @@ function imageOnLoadDir() {
     scope: {}
   };
 }
-module.directive('imageOnLoadDir', imageOnLoadDir);
+aModule.directive('imageOnLoadDir', imageOnLoadDir);

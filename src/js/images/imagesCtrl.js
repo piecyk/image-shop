@@ -1,6 +1,6 @@
 'use strict';
 
-var module = require('./_index');
+var aModule = require('./_index');
 
 
 /**
@@ -14,5 +14,13 @@ function imagesCtrl(mediaWikiFactory) {
       images.list = imagesList;
     });
   };
+
+  images.buy = function(image) {
+    console.log(image);
+  };
+
+  images.getRandomPrice = function() {
+    return Math.round(Math.random()*10) + 1;
+  };
 }
-module.controller('imagesCtrl', imagesCtrl);
+aModule.controller('imagesCtrl', imagesCtrl);

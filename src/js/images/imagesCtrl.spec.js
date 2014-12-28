@@ -1,4 +1,5 @@
 /*global angular*/
+/*global sinon*/
 
 'use strict';
 

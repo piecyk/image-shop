@@ -1,6 +1,6 @@
 'use strict';
 
-var module = require('./_index');
+var aModule = require('./_index');
 
 
 /**
@@ -16,4 +16,4 @@ function imagesDir() {
     scope: {}
   };
 }
-module.directive('imagesDir', imagesDir);
+aModule.directive('imagesDir', imagesDir);

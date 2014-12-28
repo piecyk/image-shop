@@ -73,7 +73,7 @@ describe('images:factory:mediaWikiFactory', function() {
       .then(
         function(data) {
           expect(data.status).to.eql(500);
-          expect(mediaWikiFactory.images).to.eql(null);
+          expect(mediaWikiFactory.images).to.eql([]);
 
           done();
         });

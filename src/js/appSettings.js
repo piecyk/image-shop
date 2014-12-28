@@ -1,8 +1,9 @@
 'use strict';
 
-var AppSettings = {
+var appSettings = {
   appTitle: 'Bob Image Shop',
-  apiUrl: '/api/v1'
+  // hack for CORS in gh-pages
+  WIKIPEDIA_API_URL: 'http://www.corsproxy.com/en.wikipedia.org/w/api.php'
 };
 
-module.exports = AppSettings;
+module.exports = appSettings;
