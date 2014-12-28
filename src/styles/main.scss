@@ -1,17 +1,58 @@
 @import 'vars';
 @import 'typography';
 
+
+$font-stack: 'Roboto', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+
 body {
-  font-family: Helvetica, sans-serif;
-  color: $font-color--dark;
-  // background-color: $background--light;
-  // padding: $half-space;
+  background: #eee;
+  margin: 0;
+  padding: 0;
+  font-family: $font-stack;
+  color: #333;
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
 }
 
+header {
+  width: 100%;
+  padding: 20px 0;
+  padding-left: 10px;
+  background: #fff;
+  border-bottom: 1px solid #e1e1e1;
+  /* animation magic */
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  z-index: 9999;
+  top: 0;
+  position: fixed;
+}
+
+.container {
+  margin: 80px auto;
+}
+
+p {
+  margin: 0 0 40px 0;
+  line-height: 24px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+
+
+
+// list
 .images-list-wrapper {
 	width: 90%;
 	margin: 50px auto;
 }
+
 .images-list-columns {
 	-webkit-column-count: 1;
 	-webkit-column-gap: 5px;

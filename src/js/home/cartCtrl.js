@@ -7,17 +7,18 @@ var homeModule = require('./_index');
  * @ngInject
  */
 function cartCtrl() {
-  var vm = this;
-
-  vm.label = vm.label || '123';
-  vm.cart = {};
-
-  vm.add = function(id) {
-    return id + 1;
+  var cart = this;
+  
+  //cart.cartList = {
+  //key: {
+  //image
+  //count
+  //};
+  
+  cart.add = function() {
   };
 
-  vm.remove = function(id) {
-    return id;
+  cart.remove = function() {
   };
 }
 homeModule.controller('cartCtrl', cartCtrl);

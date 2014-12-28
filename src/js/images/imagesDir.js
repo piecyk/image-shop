@@ -13,7 +13,13 @@ function imagesDir() {
     templateUrl: 'js/images/imagesDir.tpl.html',
     bindToController: true,
     controller: 'imagesCtrl as images',
-    scope: {}
+    scope: {},
+    link: function($scope) {
+
+      $scope.$on('$destroy', function handleDestroyEvent() {
+        $scope.images.menuCtrlQueryChange();
+      });
+    }
   };
 }
 aModule.directive('imagesDir', imagesDir);
