@@ -12,10 +12,10 @@ describe('home:ctrl:cartCtrl', function () {
     angular.mock.inject(function($controller) {
       ctrlFn = $controller('cartCtrl', {}, true);
     });
+    cartCtrl = ctrlFn();
   });
 
   it('should exist', function() {
-    cartCtrl = ctrlFn();
     expect(cartCtrl).to.exist();
   });
 
@@ -25,4 +25,7 @@ describe('home:ctrl:cartCtrl', function () {
     expect(cartCtrl.label).to.eq('123');
   });
 
+  it('should check the add function', function() {
+    expect(cartCtrl.add(1)).to.eq(2);
+  });
 });
