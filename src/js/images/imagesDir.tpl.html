@@ -1,12 +1,4 @@
 <div>
-  Search images:
-  <input type="text"
-         name="is-images-query"
-         ng-model="images.query"
-         ng-change="images.queryChange(images.query)"
-         ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 500} }"
-         />
-
   <div class="images-list-wrapper">
 	  <div class="images-list-columns">
 		  <div class="images-list-pin" ng-repeat="image in images.list track by image.sha1">
@@ -21,5 +13,4 @@
       Sorry no results found...
     </span>
   </div>
-
 </div>

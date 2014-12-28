@@ -24,8 +24,4 @@ describe('home:ctrl:cartCtrl', function () {
     cartCtrl = ctrlFn();
     expect(cartCtrl.label).to.eq('123');
   });
-
-  it('should check the add function', function() {
-    expect(cartCtrl.add(1)).to.eq(2);
-  });
 });

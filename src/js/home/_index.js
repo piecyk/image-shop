@@ -13,3 +13,5 @@ require('./homeClickDir');
 
 require('./cartDir');
 require('./cartCtrl');
+
+require('./menuDir');
