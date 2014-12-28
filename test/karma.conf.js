@@ -20,22 +20,22 @@ module.exports = function(config) {
       'karma-chrome-launcher'
     ],
     preprocessors: {
-      'src/js/**/*.js': ['browserify', 'coverage']
+      'src/js/**/*.js': ['browserify']
     },
     proxies: {
       '/': 'http://localhost:9876/'
     },
     urlRoot: '/__karma__/',
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
     reporters: ['progress', 'coverage'],
     coverageReporter: {
       reporters: [
         // TODO: bug with split
         // https://github.com/karma-runner/karma-coverage/issues/123
-        // { type: 'lcov',
-        //   dir: 'test/coverage/'
-        // },
+        {
+          type: 'lcov',
+          dir: 'test/coverage/'
+        },
         {
           type: 'text-summary',
           dir: 'test/coverage/'
@@ -49,7 +49,6 @@ module.exports = function(config) {
           '**/src/js/**/*.spec.js'
         ]
       })]
-      //, debug: true
     },
     files: [
       // src-specific code

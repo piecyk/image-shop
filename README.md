@@ -3,6 +3,7 @@ image-shop
 
 [![Stories in Ready](https://badge.waffle.io/piecyk/image-shop.png?label=ready&title=Ready)](https://waffle.io/piecyk/image-shop)
 [![Build Status](https://travis-ci.org/piecyk/image-shop.svg?branch=master)](https://travis-ci.org/piecyk/image-shop)
+[![Coverage Status](https://img.shields.io/coveralls/piecyk/image-shop.svg)](https://coveralls.io/r/piecyk/image-shop)
 [![devDependency Status](https://david-dm.org/piecyk/image-shop/dev-status.svg)](https://david-dm.org/piecyk/image-shop#info=devDependencies)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/piecyk/image-shop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
