@@ -12,7 +12,7 @@ function menuDir() {
     replace: true,
     bindToController: true,
     controller: 'menuCtrl as menu',
-    templateUrl: 'js/home/menuDir.tpl.html',
+    templateUrl: 'js/menu/menuDir.tpl.html',
     scope: {}
   };
 }

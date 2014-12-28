@@ -8,7 +8,7 @@ describe('home:ctrl:cartCtrl', function () {
 
   var ctrlFn, cartCtrl;
   beforeEach(function (){
-    angular.mock.module('home');
+    angular.mock.module('cart');
     angular.mock.inject(function($controller) {
       ctrlFn = $controller('cartCtrl', {}, true);
     });

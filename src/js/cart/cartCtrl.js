@@ -1,6 +1,6 @@
 'use strict';
 
-var homeModule = require('./_index');
+var aModule = require('./_index');
 
 
 /**
@@ -21,4 +21,4 @@ function cartCtrl() {
   cart.remove = function() {
   };
 }
-homeModule.controller('cartCtrl', cartCtrl);
+aModule.controller('cartCtrl', cartCtrl);

@@ -1,6 +1,6 @@
 'use strict';
 
-var homeModule = require('./_index');
+var aModule = require('./_index');
 
 
 /**
@@ -10,10 +10,10 @@ function cartDir() {
   return {
     restrict: 'A',
     replace: true,
-    templateUrl: 'js/home/cartDir.tpl.html',
+    templateUrl: 'js/cart/cartDir.tpl.html',
     bindToController: true,
     controller: 'cartCtrl as cart',
     scope: {}
   };
 }
-homeModule.directive('cartDir', cartDir);
+aModule.directive('cartDir', cartDir);

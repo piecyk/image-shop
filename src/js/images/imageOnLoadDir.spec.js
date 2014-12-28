@@ -9,7 +9,7 @@ describe('images:directive:imageOnLoadDir', function () {
   var $compile;
 
   beforeEach(function (){
-    angular.mock.module('is-images');
+    angular.mock.module('images');
     angular.mock.inject(function(_$rootScope_, _$compile_) {
         $rootScope = _$rootScope_;
         $compile = _$compile_;

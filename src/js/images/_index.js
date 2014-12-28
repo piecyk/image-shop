@@ -2,7 +2,7 @@
 
 var angular = require('angular');
 
-module.exports = angular.module('is-images', []);
+module.exports = angular.module('images', []);
 
 require('./imagesDir');
 require('./imagesCtrl');

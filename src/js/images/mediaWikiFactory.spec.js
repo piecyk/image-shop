@@ -9,7 +9,7 @@ describe('images:factory:mediaWikiFactory', function() {
   var $rootScope;
 
   beforeEach(function() {
-    angular.mock.module('is-images');
+    angular.mock.module('images');
     angular.mock.inject(function(_$rootScope_, _$httpBackend_, _mediaWikiFactory_) {
       mediaWikiFactory = _mediaWikiFactory_.____unit();
       $httpBackend = _$httpBackend_;

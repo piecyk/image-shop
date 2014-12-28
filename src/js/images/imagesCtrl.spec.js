@@ -11,7 +11,7 @@ describe('images:ctrl:imagesCtrl', function () {
   var $rootScope;
 
   beforeEach(function (){
-    angular.mock.module('is-images');
+    angular.mock.module('images');
     angular.mock.inject(function($controller, _mediaWikiFactory_, _$rootScope_) {
       mediaWikiFactory = _mediaWikiFactory_;
       imagesCtrl = $controller('imagesCtrl');

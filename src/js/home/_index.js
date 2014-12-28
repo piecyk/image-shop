@@ -2,16 +2,7 @@
 
 var angular = require('angular');
 
-module.exports = angular.module('home', [
-  'ui.router'
-]);
-angular.module('home').config(require('./homeRoutes'));
+module.exports = angular.module('home', []);
 
-// Define the list
 require('./homeCtrl');
 require('./homeClickDir');
-
-require('./cartDir');
-require('./cartCtrl');
-
-require('./menuDir');
