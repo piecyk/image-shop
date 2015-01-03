@@ -3,9 +3,13 @@
 var coveralls = require('gulp-coveralls');
 var gulp      = require('gulp');
 var config    = require('../config');
-var gulpif    = require('gulp-if');
+var gutil     = require('gulp-util');
 
 gulp.task('coveralls', function() {
-  gulp.src(config.test.coverage + '/**/lcov.info')
-    .pipe(gulpif(process.env.TRAVIS, coveralls()));
+  if (process.env.TRAVIS) {
+    gutil.log('coveralls...');
+    
+    gulp.src(config.test.coverage + '/**/lcov.info')
+      .pipe(coveralls());
+  }
 });
