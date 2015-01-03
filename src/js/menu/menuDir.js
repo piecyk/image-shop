@@ -26,7 +26,7 @@ function menuCtrl($rootScope) {
   var menu = this;
 
   menu.queryChange = function(query) {
-    $rootScope.$broadcast('menuCtrlQueryChange', {'query': query});
+    $rootScope.$broadcast('menuCtrl.queryChange', {'query': query});
   };
 }
 aModule.controller('menuCtrl', menuCtrl);

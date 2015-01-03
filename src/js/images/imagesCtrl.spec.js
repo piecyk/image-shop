@@ -31,7 +31,7 @@ describe('images:ctrl:imagesCtrl', function () {
     var query = 'test';
     var spyQuery = sinon.spy(mediaWikiFactory, 'query');
 
-    $rootScope.$broadcast('menuCtrlQueryChange', {'query': query});
+    $rootScope.$broadcast('menuCtrl.queryChange', {'query': query});
     expect(spyQuery).to.have.been.calledWith(query);
   });
 

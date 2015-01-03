@@ -11,7 +11,7 @@ function imagesCtrl($rootScope, mediaWikiFactory) {
 
   images.list = mediaWikiFactory.images;
 
-  images.menuCtrlQueryChange = $rootScope.$on('menuCtrlQueryChange', function(event, args) {
+  images.menuCtrlQueryChange = $rootScope.$on('menuCtrl.queryChange', function(event, args) {
     mediaWikiFactory.query(args.query).then(function(imagesList) {
       images.list = imagesList;
     });
