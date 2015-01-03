@@ -33,7 +33,7 @@ module.exports = function(config) {
         // TODO: bug with split
         // https://github.com/karma-runner/karma-coverage/issues/123
         { type: 'lcov' },
-        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' }
+        { type: 'text-summary' }
       ]
     },
     browserify: {
