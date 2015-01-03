@@ -29,17 +29,12 @@ module.exports = function(config) {
     logLevel: config.LOG_DEBUG,
     reporters: ['progress', 'coverage'],
     coverageReporter: {
+      dir: 'test/coverage/',
       reporters: [
         // TODO: bug with split
         // https://github.com/karma-runner/karma-coverage/issues/123
-        {
-          type: 'lcov',
-          dir: 'test/coverage/'
-        },
-        {
-          type: 'text-summary',
-          dir: 'test/coverage/'
-        }
+        { type: 'lcov' },
+        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' }
       ]
     },
     browserify: {
@@ -48,7 +43,8 @@ module.exports = function(config) {
           '**/src/js/templates.js',
           '**/src/js/**/*.spec.js'
         ]
-      })]
+      })],
+      debug: false
     },
     files: [
       // src-specific code

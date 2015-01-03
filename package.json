@@ -55,7 +55,7 @@
     "karma-sinon": "^1.0.4",
     "mocha": "^2.0.1",
     "morgan": "^1.2.2",
-    "pretty-hrtime": "^0.2.2",
+    "pretty-hrtime": "^1.0.0",
     "protractor": "^1.2.0",
     "ramda": "^0.8.0",
     "run-sequence": "^1.0.2",
