@@ -1,5 +1,4 @@
 /*global angular*/
-/*global sinon*/
 
 'use strict';
 
@@ -30,10 +29,10 @@ describe('images:ctrl:imagesCtrl', function () {
 
   it('should check queryChange', function() {
     var query = 'test';
-    var spy = sinon.spy(mediaWikiFactory, 'query');
+    var spyQuery = sinon.spy(mediaWikiFactory, 'query');
 
     $rootScope.$broadcast('menuCtrlQueryChange', {'query': query});
-    expect(spy.calledWith(query)).to.be.true();
+    expect(spyQuery).to.have.been.calledWith(query);
   });
 
 });
