@@ -1,24 +1,20 @@
 'use strict';
 
 var aModule = require('./_index');
-var R = require('ramda');
-var Type = require('../common/type');
 var appSettings = require('../appSettings');
-
+var R = require('ramda');
 
 /**
  * @ngInject
  */
 function mediaWikiFactory($http, $q) {
-  var self = this;
 
-  self.images = [];
-  self.lastContinue = '';
+  var self = this;
 
   self.query = function(query) {
 
     if (R.isEmpty(query)) {
-      return $q.when(setImagesAndReturnNewArray());
+      return $q.when(null);
     }
 
     // http://www.mediawiki.org/wiki/API:Allimages
@@ -29,39 +25,21 @@ function mediaWikiFactory($http, $q) {
         action: 'query'
         , format: 'json'
         , list: 'allimages'
-        , ailimit: 20
+        , ailimit: 3
         , aiprop: 'url|dimensions|mime|sha1'
         , aifrom: query
-        //, continue: self.lastContinue
+        //, continue: var lastContinue
       }
     };
 
-    return $http(config).then(querySuccess, queryError);
-  };
-
-  function setImagesAndReturnNewArray(array) {
-    self.images = Type.set(array || [], 'array');
-    // return array
-    return self.images;
-  }
-
-  function querySuccess(response) {
-    //TODO: use lastContinue add infinite scroll
-    //self.lastContinue = Type.set(response.data.continue, 'object');
-
-    return setImagesAndReturnNewArray(response.data.query.allimages);
-  }
-
-  function queryError(response) {
-    //TODO: called asynchronously if an error occurs or server returns response with an error status.
-    return response;
-  }
-
-  self.____unit = function() {
-    return R.mixin(self, {
-      querySuccess: querySuccess,
-      queryError: queryError
-    });
+    return $http(config).then(
+      function(response) {
+        return response.data.query.allimages;
+      },
+      function(response) {
+        //TODO: called asynchronously if an error occurs or server returns response with an error status.
+        return response;
+      });
   };
 
   return self;

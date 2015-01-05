@@ -6,19 +6,8 @@ var aModule = require('./_index');
 /**
  * @ngInject
  */
-function cartCtrl() {
+function cartCtrl(cartStore) {
   var cart = this;
-  
-  //cart.cartList = {
-  //key: {
-  //image
-  //count
-  //};
-  
-  cart.add = function() {
-  };
-
-  cart.remove = function() {
-  };
+  cart.cartStore = cartStore;
 }
 aModule.controller('cartCtrl', cartCtrl);

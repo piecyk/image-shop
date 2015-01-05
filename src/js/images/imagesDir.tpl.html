@@ -2,10 +2,11 @@
   <div class="images-list-wrapper">
 	  <div class="images-list-columns">
 		  <div class="images-list-pin" ng-repeat="image in images.list track by image.sha1">
-			  <img ng-src="{{image.url}}" image-on-load-dir/>
+			  <img ng-src="{{::image.url}}" image-on-load-dir/>
         <p>
-          {{::1 | currency}}
-          <button ng-click="images.buy(image)">Buy</button>
+          {{::image.price | currency}}
+          <button ng-click="images.add(image)">Buy</button>
+          <button ng-show="image.count>0" ng-click="images.remove(image)">Remove ({{image.count}})</button>
 			  </p>
 		  </div>
     </div>

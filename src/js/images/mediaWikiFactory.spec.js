@@ -11,7 +11,7 @@ describe('images:factory:mediaWikiFactory', function() {
   beforeEach(function() {
     angular.mock.module('images');
     angular.mock.inject(function(_$rootScope_, _$httpBackend_, _mediaWikiFactory_) {
-      mediaWikiFactory = _mediaWikiFactory_.____unit();
+      mediaWikiFactory = _mediaWikiFactory_;
       $httpBackend = _$httpBackend_;
       $rootScope = _$rootScope_;
     });
@@ -22,7 +22,7 @@ describe('images:factory:mediaWikiFactory', function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-
+  
   it('should exist', function() {
     expect(mediaWikiFactory).to.exist();
   });
@@ -32,9 +32,9 @@ describe('images:factory:mediaWikiFactory', function() {
     expect(mediaWikiFactory.query).to.be.a('Function');
   });
 
-  it('should check function query with empty param and return empty array', function(done) {
+  it('should check function query with empty param and return null', function(done) {
     var promise = mediaWikiFactory.query().then(function(result) {
-      expect(result).to.eql([]);
+      expect(result).to.eql(null);
       done();
     });
     $rootScope.$digest();
@@ -52,9 +52,7 @@ describe('images:factory:mediaWikiFactory', function() {
       .query(query)
       .then(
         function(data) {
-          expect(data).to.eql([]);
-          expect(mediaWikiFactory.images).to.eql([]);
-
+          expect(data).to.eql([]);       
           done();
         });
     $httpBackend.flush();
@@ -73,10 +71,8 @@ describe('images:factory:mediaWikiFactory', function() {
       .then(
         function(data) {
           expect(data.status).to.eql(500);
-          expect(mediaWikiFactory.images).to.eql([]);
-
           done();
-        });
+        });    
     $httpBackend.flush();
   });
 
@@ -87,15 +83,5 @@ describe('images:factory:mediaWikiFactory', function() {
       }
     };
   }
-
-  it('should mediaWikiFactory querySuccess to exist an be a Function', function() {
-    expect(mediaWikiFactory.querySuccess).to.exist();
-    expect(mediaWikiFactory.querySuccess).to.be.a('Function');
-  });
-
-  it('should mediaWikiFactory queryError to exist an be a Function', function() {
-    expect(mediaWikiFactory.queryError).to.exist();
-    expect(mediaWikiFactory.queryError).to.be.a('Function');
-  });
-
+  
 });

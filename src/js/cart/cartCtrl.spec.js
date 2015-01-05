@@ -3,11 +3,11 @@
 'use strict';
 
 
-describe('home:ctrl:cartCtrl', function () {
+describe('cart:ctrl:cartCtrl', function () {
 
   var ctrlFn, cartCtrl;
   beforeEach(function (){
-    angular.mock.module('cart');
+    angular.mock.module('common', 'cart');
     angular.mock.inject(function($controller) {
       ctrlFn = $controller('cartCtrl', {}, true);
     });

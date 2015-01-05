@@ -22,11 +22,14 @@ aModule.directive('menuDir', menuDir);
 /**
  * @ngInject
  */
-function menuCtrl($rootScope) {
+function menuCtrl(dispatcher, imagesStore, cartStore) {
   var menu = this;
 
+  menu.imagesStore = imagesStore;
+  menu.cartStore = cartStore;
+
   menu.queryChange = function(query) {
-    $rootScope.$broadcast('menuCtrl.queryChange', {'query': query});
+    dispatcher.dispatch('images:queryChange', query);
   };
 }
 aModule.controller('menuCtrl', menuCtrl);

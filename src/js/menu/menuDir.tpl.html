@@ -5,6 +5,6 @@
          ng-model="menu.query"
          ng-change="menu.queryChange(menu.query)"
          ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 500} }"/>
-  <button ui-sref="home()">Search</button>
-  <button ui-sref="cart()">Cart</button>
+  <button ui-sref="search()">Search</button>
+  <button ui-sref="cart()">Cart ({{menu.cartStore.count()}} value: {{menu.cartStore.getPrice() | currency}})</button>
 </header>

@@ -4,10 +4,11 @@ var angular = require('angular');
 
 // angular modules
 require('angular-ui-router');
-require('./templates');
 
+// app modules
+require('./templates');
+require('./common/_index');
 require('./menu/_index');
-require('./home/_index');
 require('./images/_index');
 require('./cart/_index');
 
@@ -16,10 +17,10 @@ angular.element(document).ready(function() {
 
   var requires = [
     'ui.router',
-    'templates',
 
+    'templates',
+    'common',
     'menu',
-    'home',
     'images',
     'cart'
   ];

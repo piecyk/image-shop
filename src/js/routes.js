@@ -7,21 +7,26 @@ function Routes($stateProvider) {
 
   // TODO: fix gh-page dont work with this url
   // $locationProvider.html5Mode(true).hashPrefix("#");
-  
+
   $stateProvider
-    .state('home', {
+    .state('search', {
       url: '/',
-      controller: 'homeCtrl as home',
-      templateUrl: 'js/home/homeView.tpl.html'
+      controllerAs: 'search',
+      controller: ['imagesStore', function(imagesStore) {
+        var search = this;
+        search.imagesStore = imagesStore;
+      }],
+      template: '<div list="search.imagesStore.map" images-dir></div>'
     })
 
+  //TODO: refactor cart
     .state('cart', {
       url: '/cart',
       template: '<div cart-dir></div>'
     })
 
   ;
-  
+
 }
 
 module.exports = Routes;
