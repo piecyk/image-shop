@@ -22,7 +22,10 @@ describe('images:factory:mediaWikiFactory', function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  
+  var params = {
+    aifrom: 'test'
+  };
+
   it('should exist', function() {
     expect(mediaWikiFactory).to.exist();
   });
@@ -33,8 +36,8 @@ describe('images:factory:mediaWikiFactory', function() {
   });
 
   it('should check function query with empty param and return null', function(done) {
-    var promise = mediaWikiFactory.query().then(function(result) {
-      expect(result).to.eql(null);
+    var promise = mediaWikiFactory.query().then(function(data) {
+      expect(data).to.eql(null);
       done();
     });
     $rootScope.$digest();
@@ -42,17 +45,15 @@ describe('images:factory:mediaWikiFactory', function() {
   });
 
   it('should check function query with test param and return empty array', function(done) {
-    var query = 'test';
-
     $httpBackend
-      .when('GET', /test/)
+      .when('JSONP', /test/)
       .respond(getResponseHttpObj());
 
     mediaWikiFactory
-      .query(query)
+      .query(params)
       .then(
         function(data) {
-          expect(data).to.eql([]);       
+          expect(data.query.allimages).to.eql([]);
           done();
         });
     $httpBackend.flush();
@@ -60,19 +61,17 @@ describe('images:factory:mediaWikiFactory', function() {
 
 
   it('should check function query with http 500 error', function(done) {
-    var query = 'test';
-
     $httpBackend
-      .when('GET', /test/)
+      .when('JSONP', /test/)
       .respond(500, '');
 
     mediaWikiFactory
-      .query(query)
+      .query(params)
       .then(
-        function(data) {
-          expect(data.status).to.eql(500);
+        function(response) {
+          expect(response.status).to.eql(500);
           done();
-        });    
+        });
     $httpBackend.flush();
   });
 
@@ -83,5 +82,5 @@ describe('images:factory:mediaWikiFactory', function() {
       }
     };
   }
-  
+
 });

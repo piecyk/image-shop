@@ -2,7 +2,7 @@
 
 var ImageHelper = require('./ImageHelper');
 
-describe('common:Type', function () {
+describe('common:ImageHelper', function () {
 
   var imageHelper;
 
@@ -24,28 +24,30 @@ describe('common:Type', function () {
   }];
 
   it('should check exists', function (){
-    imageHelper.createMap(images);
+    imageHelper.addToMap(images);
     expect(imageHelper.count()).to.eq(2);
   });
 
   it('should dont add the same image', function (){
-    imageHelper.createMap(images);
-    imageHelper.add(images[0]);
+    imageHelper.addToMap(images).add(images[0]);
     expect(imageHelper.count()).to.eq(2);
   });
 
   it('should dont remove image', function (){
-    imageHelper.createMap(images);
-    imageHelper.remove(images[0]);
+    imageHelper.addToMap(images).remove(images[0]);
     expect(imageHelper.count()).to.eq(2);
   });
 
   it('should remove image when removeFromMap: true', function (){
-    imageHelper = ImageHelper.build({ removeFromMap: true });
-    imageHelper.createMap(images);
+    imageHelper = ImageHelper.build({ removeFromMap: true }).addToMap(images);
     imageHelper.add(images[0]);
     imageHelper.remove(images[0]);
     expect(imageHelper.count()).to.eq(1);
+  });
+
+  it('should clear map', function (){
+    imageHelper.addToMap(images).clearMap();
+    expect(imageHelper.count()).to.eq(0);
   });
 
 });

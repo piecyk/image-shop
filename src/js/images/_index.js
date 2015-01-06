@@ -9,3 +9,5 @@ require('./imagesDir');
 require('./imagesCtrl');
 require('./mediaWikiFactory');
 require('./imageOnLoadDir');
+require('./imagesSearchDir');
+require('./imagesSearchCtrl');

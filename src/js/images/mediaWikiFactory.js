@@ -11,33 +11,35 @@ function mediaWikiFactory($http, $q) {
 
   var self = this;
 
-  self.query = function(query) {
-
-    if (R.isEmpty(query)) {
-      return $q.when(null);
-    }
-
+  function buildConfig(params) {
     // http://www.mediawiki.org/wiki/API:Allimages
     var config = {
-      url : appSettings.WIKIPEDIA_API_URL,
-      method : 'GET',
+      url: appSettings.WIKIPEDIA_API_URL,
+      method: 'JSONP',
       params: {
-        action: 'query'
-        , format: 'json'
-        , list: 'allimages'
-        , ailimit: 3
-        , aiprop: 'url|dimensions|mime|sha1'
-        , aifrom: query
-        //, continue: var lastContinue
+        action: 'query',
+        callback: 'JSON_CALLBACK',
+        format: 'json',
+        list: 'allimages',
+        aiprop: 'url|dimensions|mime|sha1|timestamp',
+        ailimit: 10,
+        aifrom: '',
+        continue: ''
       }
     };
+    angular.extend(config.params, params);
 
-    return $http(config).then(
+    return config;
+  }
+
+  self.query = function(params) {
+    if (!params || R.isEmpty(params.aifrom)) { return $q.when(null); }
+
+    return $http(buildConfig(params)).then(
       function(response) {
-        return response.data.query.allimages;
+        return response.data;
       },
       function(response) {
-        //TODO: called asynchronously if an error occurs or server returns response with an error status.
         return response;
       });
   };

@@ -11,15 +11,8 @@ function Routes($stateProvider) {
   $stateProvider
     .state('search', {
       url: '/',
-      controllerAs: 'search',
-      controller: ['imagesStore', function(imagesStore) {
-        var search = this;
-        search.imagesStore = imagesStore;
-      }],
-      template: '<div list="search.imagesStore.map" images-dir></div>'
+      template: '<div images-search-dir></div>'
     })
-
-  //TODO: refactor cart
     .state('cart', {
       url: '/cart',
       template: '<div cart-dir></div>'

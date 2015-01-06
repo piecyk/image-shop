@@ -11,22 +11,48 @@ function imagesStore(dispatcher, mediaWikiFactory) {
 
   var imageHelper = ImageHelper.build();
   var self = this;
+
   self.map = imageHelper.map;
+  self.query = null;
+  self.continue = null;
+
+  self.load = function(query) {
+    imageHelper.clearMap();
+    self.callQuery({ aifrom: query });
+  };
+
+  self.loadMore = function() {
+    self.callQuery(R.mixin({ aifrom: self.query }, self.continue));
+  };
+
+  self.callQuery = function(params) {
+    if (R.isEmpty(params.aifrom)) {
+      setParms(null, null);
+      return;
+    }
+
+    mediaWikiFactory.query(params).then(
+      function(data) {
+        setParms(params.aifrom, data.continue);
+        imageHelper.addToMap(data.query.allimages);
+      },      
+      function() {
+        setParms(null, null);
+      });
+  };
+
+  function setParms(query, continueObj) {
+    self.query = query;
+    self.continue = continueObj;
+  }
 
   self.count = imageHelper.count.bind(imageHelper);
 
   dispatcher.on('images:add', imageHelper.add.bind(imageHelper));
+
   dispatcher.on('images:remove', imageHelper.remove.bind(imageHelper));
-  dispatcher.on('images:queryChange', function(query) {
 
-    if (R.isEmpty(query)) { return; }
-
-    mediaWikiFactory.query(query)
-      .then(
-        function(data) {
-          imageHelper.createMap(data);
-        });
-  });
+  dispatcher.on('images:queryChange', self.load);
 
   self.____unit = function() {
     return R.mixin(self, {

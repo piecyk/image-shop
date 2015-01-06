@@ -1,8 +1,8 @@
 <div>
   <div class="images-list-wrapper">
 	  <div class="images-list-columns">
-		  <div class="images-list-pin" ng-repeat="image in images.list track by image.sha1">
-			  <img ng-src="{{::image.url}}" image-on-load-dir/>
+		  <div class="images-list-pin" ng-repeat="image in images.list | orderBy:timestamp track by image.sha1">
+			  <img ng-src="{{::image.url}}"/>
         <p>
           {{::image.price | currency}}
           <button ng-click="images.add(image)">Buy</button>

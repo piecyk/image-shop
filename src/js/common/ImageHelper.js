@@ -20,7 +20,7 @@ var ImageHelper = function(options) {
   }, options);
 };
 
-ImageHelper.prototype.createMap = function(array) {
+ImageHelper.prototype.addToMap = function(array) {
   function updateObj(el) {
     el.price = Math.random() * (20 - 1) + 1;
     el.count = 0;
@@ -28,16 +28,23 @@ ImageHelper.prototype.createMap = function(array) {
     return el;
   }
   function createHashMap(obj, el) {
+    //TODO: 
+    //console.log('el height:', el.height);
+    //console.log('el width:', el.width);
+
     obj[el.sha1] = updateObj(el);
     return obj;
   }
   this.map = R.reduce(createHashMap, this.map, Type.set(array || [], 'array'));
 
-  return this.map;
+  return this;
+};
+
+ImageHelper.prototype.clearMap = function() {
+  for (var el in this.map) { delete this.map[el]; };
 };
 
 ImageHelper.prototype.add = function(image) {
-  console.log('ImageHelper: add', image.count);
   if (this.map[image.sha1]) {
     this.map[image.sha1].count++;
   } else {
@@ -47,7 +54,6 @@ ImageHelper.prototype.add = function(image) {
 };
 
 ImageHelper.prototype.remove = function(image) {
-  console.log('ImageHelper: remove', image.count);
   if (this.map[image.sha1]) {
     if (this.options.removeFromMap && this.map[image.sha1].count === 1) {
       delete this.map[image.sha1];

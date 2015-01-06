@@ -15,6 +15,9 @@ var aModule = require('./_index');
 function imageOnLoadDir() {
   function link(scope, element) {
 
+    //var images = element.find('img');
+    //console.log(images);
+
     element.on('click', function() {
       console.log('click');
     });
