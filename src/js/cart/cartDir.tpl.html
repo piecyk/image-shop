@@ -1,3 +1,4 @@
 <div>
-  <div list="cart.cartStore.map" images-dir></div>
+  <div ng-if="cart.cartStore.count() === 0">Your Shopping Basket is empty.</div>
+  <div list="cart.cartStore.map" type="cart" images-dir></div>
 </div>

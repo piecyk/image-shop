@@ -16,7 +16,8 @@ var Type = require('./type');
 var ImageHelper = function(options) {
   this.map = {};
   this.options = R.mixin({
-    removeFromMap: false
+    removeFromMap: false,
+    addIfNotInMap: false
   }, options);
 };
 
@@ -28,7 +29,7 @@ ImageHelper.prototype.addToMap = function(array) {
     return el;
   }
   function createHashMap(obj, el) {
-    //TODO: 
+    //TODO: calc the size of images and
     //console.log('el height:', el.height);
     //console.log('el width:', el.width);
 
@@ -36,23 +37,26 @@ ImageHelper.prototype.addToMap = function(array) {
     return obj;
   }
   this.map = R.reduce(createHashMap, this.map, Type.set(array || [], 'array'));
-
   return this;
 };
 
 ImageHelper.prototype.clearMap = function() {
   for (var el in this.map) { delete this.map[el]; };
+  return this;
 };
 
+//TODO: don;t like this ;/ to much if... re-factor
 ImageHelper.prototype.add = function(image) {
   if (this.map[image.sha1]) {
     this.map[image.sha1].count++;
-  } else {
+  } else if (this.options.addIfNotInMap) {
     this.map[image.sha1] = image;
     this.map[image.sha1].count++;
   }
+  return this;
 };
 
+//TODO: don;t like this ;/ to much if... re-factor
 ImageHelper.prototype.remove = function(image) {
   if (this.map[image.sha1]) {
     if (this.options.removeFromMap && this.map[image.sha1].count === 1) {
@@ -61,6 +65,7 @@ ImageHelper.prototype.remove = function(image) {
       this.map[image.sha1].count--;
     }
   }
+  return this;
 };
 
 ImageHelper.prototype.count = function() {

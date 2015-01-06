@@ -5,13 +5,18 @@
 			  <img ng-src="{{::image.url}}"/>
         <p>
           {{::image.price | currency}}
-          <button ng-click="images.add(image)">Buy</button>
-          <button ng-show="image.count>0" ng-click="images.remove(image)">Remove ({{image.count}})</button>
+          <div ng-switch="images.type">
+            <div ng-switch-when="search">
+              <button ng-click="images.add(image)">Buy</button>
+              <button ng-if="image.count>0" ng-click="images.remove(image)">Remove ({{image.count}} | {{image.count * image.price | currency}})</button>
+            </div>
+            <div ng-switch-when="cart">
+              <button ng-click="images.add(image)">Add</button>
+              <button ng-if="image.count>0" ng-click="images.remove(image)">Remove ({{image.count}} | {{image.count * image.price | currency}})</button>
+            </div>
+          </div>
 			  </p>
 		  </div>
     </div>
-    <span ng-show="images.list.length===0">
-      Sorry no results found...
-    </span>
   </div>
 </div>

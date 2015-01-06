@@ -14,7 +14,8 @@ function imagesDir() {
     bindToController: true,
     controller: 'imagesCtrl as images',
     scope: {
-      list: '='
+      list: '=',
+      type: '@'
     }
   };
 }

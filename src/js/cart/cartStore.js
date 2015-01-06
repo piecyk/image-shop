@@ -8,7 +8,7 @@ var ImageHelper = require('../common/ImageHelper');
  */
 function cartStore(dispatcher) {
 
-  var imageHelper = ImageHelper.build({ removeFromMap: true });
+  var imageHelper = ImageHelper.build({ removeFromMap: true, addIfNotInMap: true });
   var self = this;
   self.map = imageHelper.map;
 

@@ -1,6 +1,6 @@
 <div>
   <div ng-if="!search.imagesStore.query">Search through billions of pictures, photos & images...</div>
-  <div list="search.imagesStore.map" images-dir></div>
+  <div list="search.imagesStore.map" type="search" images-dir></div>
   <div ng-if="search.imagesStore.continue">
     <button ng-click="search.imagesStore.loadMore()">Load more...</button>
   </div>

@@ -26,22 +26,22 @@ function imagesStore(dispatcher, mediaWikiFactory) {
   };
 
   self.callQuery = function(params) {
-    if (R.isEmpty(params.aifrom)) {
-      setParms(null, null);
+    if (!params || R.isEmpty(params.aifrom)) {
+      setConfigParams(null, null);
       return;
     }
 
     mediaWikiFactory.query(params).then(
       function(data) {
-        setParms(params.aifrom, data.continue);
+        setConfigParams(params.aifrom, data.continue);
         imageHelper.addToMap(data.query.allimages);
-      },      
+      },
       function() {
-        setParms(null, null);
+        setConfigParams(null, null);
       });
   };
 
-  function setParms(query, continueObj) {
+  function setConfigParams(query, continueObj) {
     self.query = query;
     self.continue = continueObj;
   }
