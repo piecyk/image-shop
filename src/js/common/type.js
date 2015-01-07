@@ -15,7 +15,8 @@ var Type = function() {
   self.getType = function(obj) {
     var type = Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
     if ('domwindow' === type) {
-      return 'object' === typeof obj ? 'null' : 'undefined' === typeof obj ? 'undefined' : type;
+      if ('undefined' === typeof obj) { type = 'undefined' }
+      if ('object' === typeof obj) { type = 'null' }
     }
     return type;
   };

@@ -4,7 +4,7 @@
 
 describe('images:factory:imagesStore', function() {
 
-  var $rootScope, imagesStore, dispatcher, mediaWikiFactory;
+  var $rootScope, imagesStore, dispatcher, mediaWikiFactory, $q;
 
   //TODO: load this proper
   var image = {
@@ -14,11 +14,12 @@ describe('images:factory:imagesStore', function() {
 
   beforeEach(function() {
     angular.mock.module('common', 'images');
-    angular.mock.inject(function(_$rootScope_, _imagesStore_, _dispatcher_, _mediaWikiFactory_) {
+    angular.mock.inject(function(_$rootScope_, _imagesStore_, _dispatcher_, _mediaWikiFactory_, _$q_) {
       $rootScope = _$rootScope_;
       imagesStore = _imagesStore_.____unit();
       dispatcher = _dispatcher_;
       mediaWikiFactory = _mediaWikiFactory_;
+      $q = _$q_;
     });
     imagesStore.imageHelper.addToMap([image]);
   });
@@ -49,7 +50,58 @@ describe('images:factory:imagesStore', function() {
     dispatcher.dispatch('images:remove', image);
     $rootScope.$digest();
 
-    expect(imagesStore.count()).to.to.eql(1);
+    expect(imagesStore.count()).to.eql(1);
   });
+
+  it('should setConfigParams', function() {
+    imagesStore.setConfigParams('test', {});
+
+    expect(imagesStore.setConfigParams).to.exist();
+    expect(imagesStore.query).to.eq('test');
+  });
+
+  it('should loadMore with query test', function() {
+    var spy = sinon.spy(mediaWikiFactory, 'query');
+    imagesStore.query = 'test';
+    imagesStore.loadMore();
+
+    expect(spy).to.have.been.calledWith({ aifrom: imagesStore.query});
+  });
+
+  it('should', function() {
+    var spy = sinon.spy(mediaWikiFactory, 'query');
+    imagesStore.loadMore();
+
+    expect(spy).to.not.have.been.calledWith();
+  });
+
+  it('should check when we mediaWikiFactory.query is resolved', function(done) {
+    sinon.stub(mediaWikiFactory, 'query').returns($q.when(getResponseHttpObj()));
+    var params = { aifrom: 'test' };
+    imagesStore.callQuery(params);
+    $rootScope.$digest();
+
+    expect(imagesStore.query).to.eq('test');
+    done();
+  });
+
+  it('should check when we mediaWikiFactory.query is rejected', function(done) {
+    sinon.stub(mediaWikiFactory, 'query').returns($q.reject('error'))
+    var params = { aifrom: 'test' };
+    imagesStore.callQuery(params);
+    $rootScope.$digest();
+
+    expect(imagesStore.query).to.eq(null);
+    done();
+  });
+
+
+  function getResponseHttpObj(images) {
+    return {
+      query: {
+        allimages: images || []
+      }
+    };
+  }
 
 });

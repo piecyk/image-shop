@@ -55,8 +55,9 @@ function imagesStore(dispatcher, mediaWikiFactory) {
   dispatcher.on('images:queryChange', self.load);
 
   self.____unit = function() {
-    return R.mixin(self, {
-      imageHelper: imageHelper
+    return angular.extend(self, {
+      imageHelper: imageHelper,
+      setConfigParams: setConfigParams
     });
   };
 

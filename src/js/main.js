@@ -28,9 +28,11 @@ angular.element(document).ready(function() {
   // mount on window for testing
   window.app = angular.module('app', requires);
 
-  angular.module('app').config(require('./routes'));
+  angular.module('app').config(require('./config'));
   angular.module('app').run(require('./run'));
 
-  angular.bootstrap(document, ['app']);
+  angular.bootstrap(document, ['app'], {
+    strictDi: true
+  });
 
 });
