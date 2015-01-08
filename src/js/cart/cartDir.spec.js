@@ -8,7 +8,7 @@ describe('cart:directive:cartDir', function () {
   var $rootScope, $compile, element;
 
   beforeEach(function (){
-    angular.mock.module('templates', 'common', 'cart');
+    angular.mock.module('ui.router', 'templates', 'common', 'cart');
     angular.mock.inject(function(_$rootScope_, _$compile_) {
         $rootScope = _$rootScope_.$new();
         $compile = _$compile_;

@@ -1,0 +1,17 @@
+<div>
+  <h2>Fill payment details!</h2>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" ng-model="cart.formData.name">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" name="email" ng-model="cart.formData.email">
+  </div>
+
+  <h2>Are you sure? :)!</h2>
+
+  <button ng-click="cart.processForm()" type="submit">Submit</button>
+</div>

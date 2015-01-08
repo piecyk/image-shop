@@ -6,7 +6,7 @@ var ImageHelper = require('../common/ImageHelper');
 /**
  * @ngInject
  */
-function cartStore(dispatcher) {
+function cartStore(dispatcher, $window) {
 
   var imageHelper = ImageHelper.build({ removeFromMap: true, addIfNotInMap: true });
   var self = this;
@@ -14,7 +14,8 @@ function cartStore(dispatcher) {
 
   self.getPrice = imageHelper.getPrice.bind(imageHelper);
   self.count = imageHelper.count.bind(imageHelper);
-
+  self.clear = imageHelper.clearMap.bind(imageHelper);
+  
   dispatcher.on('images:add', imageHelper.add.bind(imageHelper));
   dispatcher.on('images:remove', imageHelper.remove.bind(imageHelper));
 
