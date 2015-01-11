@@ -15,6 +15,7 @@ function imagesStore(dispatcher, mediaWikiFactory) {
   self.map = imageHelper.map;
   self.query = null;
   self.continue = null;
+  self.loading = false;
 
   self.load = function(query) {
     imageHelper.clearMap();
@@ -26,18 +27,22 @@ function imagesStore(dispatcher, mediaWikiFactory) {
   };
 
   self.callQuery = function(params) {
+    if (self.loading) { return; }
     if (!params || R.isEmpty(params.aifrom)) {
       setConfigParams(null, null);
       return;
     }
 
+    self.loading = true;
     mediaWikiFactory.query(params).then(
       function(data) {
         setConfigParams(params.aifrom, data.continue);
         imageHelper.addToMap(data.query.allimages);
+        self.loading = false;
       },
       function() {
         setConfigParams(null, null);
+        self.loading = false;
       });
   };
 

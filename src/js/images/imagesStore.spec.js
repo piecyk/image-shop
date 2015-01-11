@@ -75,6 +75,14 @@ describe('images:factory:imagesStore', function() {
     expect(spy).to.not.have.been.calledWith();
   });
 
+  it('should', function() {
+    var spy = sinon.spy(mediaWikiFactory, 'query');
+    imagesStore.loading = true;
+    imagesStore.load();
+
+    expect(spy).to.have.callCount(0);
+  });
+
   it('should check when we mediaWikiFactory.query is resolved', function(done) {
     sinon.stub(mediaWikiFactory, 'query').returns($q.when(getResponseHttpObj()));
     var params = { aifrom: 'test' };
