@@ -83,4 +83,11 @@ describe('common:ImageHelper', function () {
     expect(imageHelper.getPrice()).to.be.at.least(0);
   });
 
+  it('should getPrice at least 0', function (){
+    var map = {};
+    map[images[0].sha1] = images[0];
+    imageHelper = ImageHelper.build().addMapToMap(map);
+    expect(imageHelper.count()).to.eq(1);
+  });
+
 });

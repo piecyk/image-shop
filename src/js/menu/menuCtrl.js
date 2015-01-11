@@ -10,6 +10,8 @@ function menuCtrl(dispatcher, imagesStore, cartStore) {
   var menu = this;
 
   menu.imagesStore = imagesStore;
+
+  cartStore.fromStorage();
   menu.cartStore = cartStore;
 
   menu.queryChange = function(query) {

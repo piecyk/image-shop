@@ -86,7 +86,7 @@ describe('images:factory:imagesStore', function() {
   });
 
   it('should check when we mediaWikiFactory.query is rejected', function(done) {
-    sinon.stub(mediaWikiFactory, 'query').returns($q.reject('error'))
+    sinon.stub(mediaWikiFactory, 'query').returns($q.reject('error'));
     var params = { aifrom: 'test' };
     imagesStore.callQuery(params);
     $rootScope.$digest();

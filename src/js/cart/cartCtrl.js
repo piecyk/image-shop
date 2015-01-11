@@ -19,6 +19,6 @@ function cartCtrl(cartStore, $state) {
   cart.goBackToSearch = function() {
     cartStore.clear();
     $state.go('search');
-  }
+  };
 }
 aModule.controller('cartCtrl', cartCtrl);

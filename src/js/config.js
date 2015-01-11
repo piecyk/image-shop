@@ -12,7 +12,7 @@ function Config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
   $httpProvider.useApplyAsync(true);
 
   // go to root url
-  $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/');
 
   // routes
   $stateProvider

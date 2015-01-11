@@ -13,7 +13,7 @@ describe('app:config:Config', function() {
       $stateProvider = _$stateProvider_;
       $urlRouterProvider = _$urlRouterProvider_;
       done();
-    })
+    });
     angular.mock.inject(function() {});
   });
 

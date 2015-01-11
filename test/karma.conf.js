@@ -1,7 +1,7 @@
 'use strict';
 
 var istanbul = require('browserify-istanbul');
-
+var to5ify   = require("6to5ify");
 
 module.exports = function(config) {
 
@@ -37,12 +37,16 @@ module.exports = function(config) {
       ]
     },
     browserify: {
-      transform: [istanbul({
-        ignore: [
-          '**/src/js/templates.js',
-          '**/src/js/**/*.spec.js'
-        ]
-      })],
+      transform: [
+        //TODO: fix the coverage with to5ify
+        //to5ify,
+        istanbul({
+          ignore: [
+            '**/src/js/templates.js',
+            '**/src/js/**/*.spec.js'
+          ]
+        })
+      ],
       debug: false
     },
     files: [

@@ -33,14 +33,14 @@ describe('cart:ctrl:cartCtrl', function () {
 
   it('should check processForm', function() {
     cartCtrl.processForm();
-    $rootScope.$digest()
+    $rootScope.$digest();
 
     expect($state.current.name).to.eq('cart.status');
   });
 
   it('should check goBackToSearch', function() {
     cartCtrl.goBackToSearch();
-    $rootScope.$digest()
+    $rootScope.$digest();
 
     expect($state.current.name).to.eq('search');
   });

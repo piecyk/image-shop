@@ -29,10 +29,6 @@ ImageHelper.prototype.addToMap = function(array) {
     return el;
   }
   function createHashMap(obj, el) {
-    //TODO: calc the size of images and
-    //console.log('el height:', el.height);
-    //console.log('el width:', el.width);
-
     obj[el.sha1] = updateObj(el);
     return obj;
   }
@@ -41,7 +37,12 @@ ImageHelper.prototype.addToMap = function(array) {
 };
 
 ImageHelper.prototype.clearMap = function() {
-  for (var el in this.map) { delete this.map[el]; };
+  for (var el in this.map) { delete this.map[el]; }
+  return this;
+};
+
+ImageHelper.prototype.addMapToMap = function(map) {
+  for (var el in map) { this.map[el] = map[el]; }
   return this;
 };
 
