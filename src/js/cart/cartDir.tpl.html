@@ -1,0 +1,10 @@
+<div class="center-it">
+  <div ng-if="cart.cartStore.count() === 0">Your Shopping Basket is empty.</div>
+  <div ng-if="cart.cartStore.count() > 0">
+    <h2>Your Basket have {{cart.cartStore.count()}} with total ({{cart.cartStore.getPrice() | currency}})</h2>
+    <div ui-view></div>
+  </div>
+  <div ng-if="cart.cartStore.count() === 0 && cart.formData.name">
+    <div ui-view></div>
+  </div>
+</div>

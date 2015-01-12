@@ -41,7 +41,8 @@ module.exports = {
   'test': {
     'karma': 'test/karma.conf.js',
     'protractor': 'test/protractor.conf.js',
-    'watch': 'src/**/*.spec.js'
+    'watch': 'src/**/*.spec.js',
+    'coverage': 'test/coverage'
   }
 
 };

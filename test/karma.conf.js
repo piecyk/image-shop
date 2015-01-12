@@ -1,26 +1,25 @@
 'use strict';
 
 var istanbul = require('browserify-istanbul');
-
+var to5ify   = require("6to5ify");
 
 module.exports = function(config) {
 
   config.set({
 
     basePath: '../',
-    frameworks: ['browserify', 'mocha', 'chai', 'sinon'],
+    frameworks: ['browserify', 'mocha'],
     browsers: ['PhantomJS'],
     plugins: [
       'karma-browserify',
       'karma-coverage',
       'karma-mocha',
-      'karma-chai',
-      'karma-sinon',
       'karma-phantomjs-launcher',
       'karma-chrome-launcher'
     ],
     preprocessors: {
-      'src/js/**/*.js': ['browserify']
+      'src/js/**/*.js': ['browserify'],
+      'test/karma.adapter.js': ['browserify']
     },
     proxies: {
       '/': 'http://localhost:9876/'
@@ -29,37 +28,33 @@ module.exports = function(config) {
     logLevel: config.LOG_DEBUG,
     reporters: ['progress', 'coverage'],
     coverageReporter: {
+      dir: 'test/coverage/',
       reporters: [
         // TODO: bug with split
         // https://github.com/karma-runner/karma-coverage/issues/123
-        {
-          type: 'lcov',
-          dir: 'test/coverage/'
-        },
-        {
-          type: 'text-summary',
-          dir: 'test/coverage/'
-        }
+        { type: 'lcov' },
+        { type: 'text-summary' }
       ]
     },
     browserify: {
-      transform: [istanbul({
-        ignore: [
-          '**/src/js/templates.js',
-          '**/src/js/**/*.spec.js'
-        ]
-      })]
+      transform: [
+        //TODO: fix the coverage with to5ify
+        //to5ify,
+        istanbul({
+          ignore: [
+            '**/src/js/templates.js',
+            '**/src/js/**/*.spec.js'
+          ]
+        })
+      ],
+      debug: false
     },
     files: [
       // src-specific code
       './src/js/main.js'
-
       // 3rd-party resources
-      , './node_modules/angular-mocks/angular-mocks.js'
-      // TODO: chai-as-promised.js
-      //, 'node_modules/chai-as-promised/lib/chai-as-promised.js',
-
-      // test files
+      , './test/karma.adapter.js'
+      // test-specific code
       , './src/**/*.spec.js'
     ]
   });

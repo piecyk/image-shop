@@ -4,27 +4,35 @@ var angular = require('angular');
 
 // angular modules
 require('angular-ui-router');
+
+// app modules
 require('./templates');
-require('./home/_index');
+require('./common/_index');
+require('./menu/_index');
 require('./images/_index');
+require('./cart/_index');
 
 // create and bootstrap application
 angular.element(document).ready(function() {
 
   var requires = [
     'ui.router',
-    'templates',
 
-    'home',
-    'is-images'
+    'templates',
+    'common',
+    'menu',
+    'images',
+    'cart'
   ];
 
   // mount on window for testing
   window.app = angular.module('app', requires);
 
-  angular.module('app').config(require('./routes'));
+  angular.module('app').config(require('./config'));
   angular.module('app').run(require('./run'));
 
-  angular.bootstrap(document, ['app']);
+  angular.bootstrap(document, ['app'], {
+    strictDi: true
+  });
 
 });

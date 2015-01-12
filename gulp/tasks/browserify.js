@@ -12,6 +12,7 @@ var uglify       = require('gulp-uglify');
 var handleErrors = require('../util/handleErrors');
 var browserSync  = require('browser-sync');
 var ngAnnotate   = require('browserify-ngannotate');
+var to5ify       = require("6to5ify");
 
 // Based on: http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
 function buildScript(file) {
@@ -22,7 +23,8 @@ function buildScript(file) {
     packageCache: {},
     fullPaths: true
     //, debug : !global.isProd
-  });
+  })
+  .transform(to5ify);
 
   if ( !global.isProd ) {
     bundler = watchify(bundler);

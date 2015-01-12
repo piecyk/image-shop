@@ -6,19 +6,16 @@ var aModule = require('./_index');
 /**
  * @ngInject
  */
-function imagesCtrl($rootScope, mediaWikiFactory) {
+function imagesCtrl(dispatcher) {
   var images = this;
 
-  images.list = mediaWikiFactory.images;
-
-  images.menuCtrlQueryChange = $rootScope.$on('menuCtrlQueryChange', function(event, args) {
-    mediaWikiFactory.query(args.query).then(function(imagesList) {
-      images.list = imagesList;
-    });
-  });
-
-  images.buy = function(image) {
-    console.log(image);
+  images.add = function(image) {
+    dispatcher.dispatch('images:add', image);
   };
+
+  images.remove = function(image) {
+    dispatcher.dispatch('images:remove', image);
+  };
+
 }
 aModule.controller('imagesCtrl', imagesCtrl);

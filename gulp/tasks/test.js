@@ -5,6 +5,6 @@ var runSequence = require('run-sequence');
 
 gulp.task('test', ['server'], function() {
 
-  runSequence('prod', 'unit', 'protractor', 'exitBrowserSync');
+  runSequence('prod', 'unit', 'coveralls', 'protractor', 'exitBrowserSync');
 
 });

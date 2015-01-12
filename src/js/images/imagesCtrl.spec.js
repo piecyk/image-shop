@@ -1,21 +1,17 @@
 /*global angular*/
-/*global sinon*/
 
 'use strict';
 
 
 describe('images:ctrl:imagesCtrl', function () {
 
-  var imagesCtrl;
-  var mediaWikiFactory;
-  var $rootScope;
+  var imagesCtrl, dispatcher;
 
   beforeEach(function (){
-    angular.mock.module('is-images');
-    angular.mock.inject(function($controller, _mediaWikiFactory_, _$rootScope_) {
-      mediaWikiFactory = _mediaWikiFactory_;
+    angular.mock.module('common', 'images');
+    angular.mock.inject(function($controller, _dispatcher_) {
+      dispatcher = _dispatcher_;
       imagesCtrl = $controller('imagesCtrl');
-      $rootScope = _$rootScope_;
     });
   });
 
@@ -23,17 +19,32 @@ describe('images:ctrl:imagesCtrl', function () {
     expect(imagesCtrl).to.exist();
   });
 
-  it('should queryChange to exist an be a Function', function() {
-    expect(imagesCtrl.menuCtrlQueryChange).to.exist();
-    expect(imagesCtrl.menuCtrlQueryChange).to.be.a('Function');
+  it('should check that add function exist', function() {
+    expect(imagesCtrl.add).to.exist();
+    expect(imagesCtrl.add).to.be.a('Function');
   });
 
-  it('should check queryChange', function() {
-    var query = 'test';
-    var spy = sinon.spy(mediaWikiFactory, 'query');
+  it('should check that remove function exist', function() {
+    expect(imagesCtrl.remove).to.exist();
+    expect(imagesCtrl.remove).to.be.a('Function');
+  });
 
-    $rootScope.$broadcast('menuCtrlQueryChange', {'query': query});
-    expect(spy.calledWith(query)).to.be.true();
+  it('should check add dispatch', function() {
+    var image = {};
+    var spy = sinon.spy(dispatcher, 'dispatch');
+
+    imagesCtrl.add(image);
+
+    expect(spy).to.have.been.calledWith('images:add', image);
+  });
+
+  it('should check remove dispatch', function() {
+    var image = {};
+    var spy = sinon.spy(dispatcher, 'dispatch');
+
+    imagesCtrl.remove(image);
+
+    expect(spy).to.have.been.calledWith('images:remove', image);
   });
 
 });

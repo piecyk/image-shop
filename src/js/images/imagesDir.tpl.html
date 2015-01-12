@@ -1,16 +1,16 @@
 <div>
   <div class="images-list-wrapper">
 	  <div class="images-list-columns">
-		  <div class="images-list-pin" ng-repeat="image in images.list track by image.sha1">
-			  <img ng-src="{{image.url}}" image-on-load-dir/>
+		  <div class="images-list-pin" ng-repeat="image in images.list | orderBy:timestamp track by image.sha1">
+			  <img ng-src="{{::image.url}}"/>
         <p>
-          {{::1 | currency}}
-          <button ng-click="images.buy(image)">Buy</button>
+          {{::image.price | currency}} Total: {{image.count * image.price | currency}}
+          <div>
+            <button class="btn" ng-click="images.add(image)">{{ images.type === 'search' ? 'Buy' : 'Add' }}</button>
+            <button class="btn" ng-if="image.count>0" ng-click="images.remove(image)">Remove ({{image.count}})</button>
+          </div>
 			  </p>
 		  </div>
     </div>
-    <span ng-show="images.list.length===0">
-      Sorry no results found...
-    </span>
   </div>
 </div>

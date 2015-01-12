@@ -15,13 +15,14 @@ var aModule = require('./_index');
 function imageOnLoadDir() {
   function link(scope, element) {
 
-    element.on('click', function() {
-      console.log('click');
-    });
-
-    element.bind('load', function() {
-      //console.log('image is loaded');
-    });
+    // var images = element.find('img');
+    // console.log(images);
+    // element.on('click', function() {
+    //   console.log('click');
+    // });
+    // element.bind('load', function() {
+    // console.log('image is loaded');
+    //});
   }
 
   return {

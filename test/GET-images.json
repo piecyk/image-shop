@@ -1,0 +1,52 @@
+{
+  "query": {
+    "allimages": [
+      {
+        "title": "File:Onetaste logo.png",
+        "ns": 6,
+        "mime": "image\/png",
+        "sha1": "57e71f7136a53277073aaf5d5334e48531eb72b3",
+        "descriptionurl": "http:\/\/en.wikipedia.org\/wiki\/File:Onetaste_logo.png",
+        "url": "http:\/\/upload.wikimedia.org\/wikipedia\/en\/4\/4d\/Onetaste_logo.png",
+        "height": 53,
+        "width": 231,
+        "size": 6604,
+        "name": "Onetaste_logo.png"
+      },
+      {
+        "title": "File:Onethebeach.jpg",
+        "ns": 6,
+        "mime": "image\/jpeg",
+        "sha1": "5c782b3e58cd44a6d3977d4031b9cc203d2e3947",
+        "descriptionurl": "http:\/\/en.wikipedia.org\/wiki\/File:Onethebeach.jpg",
+        "url": "http:\/\/upload.wikimedia.org\/wikipedia\/en\/5\/51\/Onethebeach.jpg",
+        "height": 462,
+        "width": 300,
+        "size": 23878,
+        "name": "Onethebeach.jpg"
+      },
+      {
+        "title": "File:OnethirdposterFTP.jpg",
+        "ns": 6,
+        "mime": "image\/jpeg",
+        "sha1": "8d3d6f191673c364490cf339b8cf6e9409517831",
+        "descriptionurl": "http:\/\/en.wikipedia.org\/wiki\/File:OnethirdposterFTP.jpg",
+        "url": "http:\/\/upload.wikimedia.org\/wikipedia\/en\/7\/71\/OnethirdposterFTP.jpg",
+        "height": 670,
+        "width": 412,
+        "size": 59210,
+        "name": "OnethirdposterFTP.jpg"
+      }
+    ]
+  },
+  "warnings": {
+    "query": {
+      "*": "Formatting of continuation data will be changing soon. To continue using the current formatting, use the 'rawcontinue' parameter. To begin using the new format, pass an empty string for 'continue' in the initial query."
+    }
+  },
+  "query-continue": {
+    "allimages": {
+      "aicontinue": "Onethirtybpm_screencap.png"
+    }
+  }
+}

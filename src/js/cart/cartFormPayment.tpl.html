@@ -1,0 +1,44 @@
+<div class="cart-form-payment">
+
+  <form name="form" autocomplete="off" novalidate submitted="cart.submitted" ng-submit="cart.processForm(form)">
+
+    <div class="panel panel-default box-shadow">
+      <div class="panel-heading">
+        <h3 class="panel-title">Fill payment details!</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="form-group" ng-class="{'has-error': form.name.$invalid && cart.submitted}">
+          <label for="name" class="control-label">Name</label>
+          <input
+             type="name"
+             class="form-control"
+             id="name"
+             name="name"
+             placeholder="Name"
+             ng-model="cart.formData.name"
+             ng-model-options="{updateOn: 'blur'}"
+             required>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': form.email.$invalid && cart.submitted}">
+          <label for="email" class="control-label">Email</label>
+          <input
+             type="email"
+             class="form-control"
+             id="email"
+             name="email"
+             placeholder="Email"
+             ng-model="cart.formData.email"
+             ng-model-options="{updateOn: 'blur'}"
+             required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+
+      </div>
+    </div>
+  </form>
+
+</div>
