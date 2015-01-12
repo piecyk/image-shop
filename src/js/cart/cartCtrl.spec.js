@@ -31,11 +31,24 @@ describe('cart:ctrl:cartCtrl', function () {
     expect(cartCtrl.label).to.eq('123');
   });
 
-  it('should check processForm', function() {
-    cartCtrl.processForm();
+  it('should check processForm when form is valid', function() {
+    var form = {
+      '$valid': true
+    };
+    cartCtrl.processForm(form);
     $rootScope.$digest();
 
     expect($state.current.name).to.eq('cart.status');
+  });
+
+  it('should check processForm when form is invalid', function() {
+    var form = {
+      '$valid': false
+    };
+    cartCtrl.processForm(form);
+    $rootScope.$digest();
+
+    expect($state.current.name).to.eq('');
   });
 
   it('should check goBackToSearch', function() {

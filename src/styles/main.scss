@@ -127,3 +127,16 @@ strong {
   margin-right: auto;
   text-align: center;
 }
+
+.cart-form-payment {
+  width: 250px;
+  margin: 50px auto;
+  -webkit-perspective: 600px;
+  -ms-perspective: 600px;
+  perspective: 600px;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0 12px 30px darkgrey;
+  box-shadow: 0 12px 30px darkgrey;
+}

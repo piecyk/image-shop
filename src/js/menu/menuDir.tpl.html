@@ -5,7 +5,7 @@
          ng-model="menu.query"
          ng-change="menu.queryChange(menu.query)"
          ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 500} }"/>
-  <button ui-sref="search()">Search</button>
-  <button ng-disabled="menu.cartStore.count() === 0" ui-sref="cart.list()">Your Basket ({{menu.cartStore.getPrice() | currency}})</button>
-  <button ng-if="menu.cartStore.count() > 0" ui-sref="cart.payment()">Checkout</button>
+  <button class="btn" ui-sref="search()">Search</button>
+  <button class="btn" ng-disabled="menu.cartStore.count() == 0" ui-sref="cart.list()">Your Basket ({{menu.cartStore.getPrice() | currency}})</button>
+  <button class="btn" ng-if="menu.cartStore.count() > 0" ui-sref="cart.payment()">Checkout</button>
 </header>

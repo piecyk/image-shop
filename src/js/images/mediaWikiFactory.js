@@ -22,7 +22,7 @@ function mediaWikiFactory($http, $q) {
         format: 'json',
         list: 'allimages',
         aiprop: 'url|dimensions|mime|sha1|timestamp',
-        ailimit: 10,
+        ailimit: 20,
         aifrom: '',
         continue: ''
       }

@@ -1,17 +1,44 @@
-<div>
-  <h2>Fill payment details!</h2>
+<div class="cart-form-payment">
 
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" name="name" ng-model="cart.formData.name">
-  </div>
+  <form name="form" autocomplete="off" novalidate submitted="cart.submitted" ng-submit="cart.processForm(form)">
 
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" class="form-control" name="email" ng-model="cart.formData.email">
-  </div>
+    <div class="panel panel-default box-shadow">
+      <div class="panel-heading">
+        <h3 class="panel-title">Fill payment details!</h3>
+      </div>
 
-  <h2>Are you sure? :)!</h2>
+      <div class="panel-body">
 
-  <button ng-click="cart.processForm()" type="submit">Submit</button>
+        <div class="form-group" ng-class="{'has-error': form.name.$invalid && cart.submitted}">
+          <label for="name" class="control-label">Name</label>
+          <input
+             type="name"
+             class="form-control"
+             id="name"
+             name="name"
+             placeholder="Name"
+             ng-model="cart.formData.name"
+             ng-model-options="{updateOn: 'blur'}"
+             required>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': form.email.$invalid && cart.submitted}">
+          <label for="email" class="control-label">Email</label>
+          <input
+             type="email"
+             class="form-control"
+             id="email"
+             name="email"
+             placeholder="Email"
+             ng-model="cart.formData.email"
+             ng-model-options="{updateOn: 'blur'}"
+             required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+
+      </div>
+    </div>
+  </form>
+
 </div>

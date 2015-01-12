@@ -11,13 +11,21 @@ function cartCtrl(cartStore, $state) {
 
   cart.cartStore = cartStore;
   cart.formData = {};
+  // hide error messages until 'submit' event
+  cart.submitted = false;
 
-  cart.processForm = function() {
+  cart.processForm = function(form) {
+    // show error messages on submit
+    cart.submitted = true;
+
+    if (!form.$valid) { return; }
+
+    cart.formData.images = cartStore.map;
+    cartStore.clear();
     $state.go('cart.status');
   };
 
   cart.goBackToSearch = function() {
-    cartStore.clear();
     $state.go('search');
   };
 }
