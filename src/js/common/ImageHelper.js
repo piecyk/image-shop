@@ -29,7 +29,11 @@ ImageHelper.prototype.addToMap = function(array) {
     return el;
   }
   function createHashMap(obj, el) {
-    obj[el.sha1] = updateObj(el);
+    var typeRegex = /jpeg|png/;
+
+    if (typeRegex.test(el.mime)) {
+      obj[el.sha1] = updateObj(el);
+    };
     return obj;
   }
   this.map = R.reduce(createHashMap, this.map, Type.set(array || [], 'array'));

@@ -3,7 +3,6 @@
 'use strict';
 
 var aModule = require('./_index');
-var R = require('ramda');
 var Type = require('./type');
 
 /**
@@ -19,11 +18,9 @@ function dispatcher($rootScope) {
   self.on = function(name, fn) {
     if (!Type.of(name).is('string')) { return false; }
 
-    $rootScope.$on(name, function(event, args) {
+    return $rootScope.$on(name, function(event, args) {
       fn(angular.copy(args.params), event);
     });
-
-    return true;
   };
 
   return self;
