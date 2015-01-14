@@ -23,11 +23,11 @@ describe('common:ImageHelper', function () {
   var images = [{
     'title': 'File:Onetaste logo.png',
     'sha1': '57e71f7136a53277073aaf5d5334e48531eb72b1',
-    'mime': 'image\/gif'
+    'mime': 'image\/jpeg'
   }, {
     'title': 'File:Onetaste logo2.png',
     'sha1': '57e71f7136a53277073aaf5d5334e48531eb72b2',
-    'mime': 'image\/gif'
+    'mime': 'image\/jpeg'
   },{
     'title': 'File:Onetaste logo3.png',
     'sha1': '57e71f7136a53277073aaf5d5334e48531eb72b2',
