@@ -10,7 +10,7 @@ describe('images:factory:imagesStore', function() {
   var image = {
     'title': 'File:Onetaste logo.png',
     'sha1': '57e71f7136a53277073aaf5d5334e48531eb72b3',
-    "mime": "image\/jpeg"
+    'mime': 'image\/jpeg'
   };
 
   beforeEach(function() {
