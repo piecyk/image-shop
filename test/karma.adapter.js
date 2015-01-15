@@ -3,7 +3,7 @@
 // PhantomJS does not have Function.prototype.bind :(
 Function.prototype.bind = require("function-bind");
 
-require('angular-mocks');
+require('./../node_modules/angular-mocks/angular-mocks');
 var chai      = require('chai');
 var sinon     = require('sinon');
 var sinonChai = require('sinon-chai');
