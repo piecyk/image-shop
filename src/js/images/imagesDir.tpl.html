@@ -2,7 +2,7 @@
   <div class="images-list-wrapper">
 	  <div class="images-list-columns">
 		  <div class="images-list-pin" ng-repeat="image in images.list | orderBy:timestamp track by image.sha1">
-			  <img ng-src="{{::image.url}}"/>
+			  <img ui-sref="showImage({id: image.title})" ng-src="{{::image.url}}"/>
         <p>
           {{::image.price | currency}} Total: {{image.count * image.price | currency}}
           <div>

@@ -1,0 +1,21 @@
+<div class="images-list-pin">
+  <img ng-src="{{::showImage.image.url}}" class="img-responsive">
+  <p>
+    <dl class="dl-horizontal">
+      <dt>Photographer</dt>
+      <dd>{{::showImage.image.user}}</dd>
+
+      <dt>{{::showImage.image.metadata[0].name}}</dt>
+      <dd>{{::showImage.image.metadata[0].value}}</dd>
+
+      <dt>{{::showImage.image.metadata[1].name}}</dt>
+      <dd>{{::showImage.image.metadata[1].value}}</dd>
+
+      <dt>{{::showImage.image.metadata[2].name}}</dt>
+      <dd>{{::showImage.image.metadata[2].value}}</dd>
+
+      <dt>{{::showImage.image.metadata[3].name}}</dt>
+      <dd>{{::showImage.image.metadata[3].value}}</dd>
+    </dl>
+  </p>
+</div>

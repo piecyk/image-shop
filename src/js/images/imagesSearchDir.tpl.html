@@ -1,4 +1,5 @@
 <div>
   <div ng-if="!search.imagesStore.query">Search through billions of pictures, photos & images...</div>
   <div list="search.imagesStore.map" type="search" images-dir when-scrolled="search.imagesStore.loadMore()" infinite-scroll-dir></div>
+  <div ng-show="search.imagesStore.continue">Scroll to load more...</div>
 </div>
