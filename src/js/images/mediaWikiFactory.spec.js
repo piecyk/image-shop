@@ -44,7 +44,22 @@ describe('images:factory:mediaWikiFactory', function() {
     expect(promise).to.exist();
   });
 
-  it('should check function query with test param and return empty array', function(done) {
+  it('should check function query with test param and return empty obj', function(done) {
+    $httpBackend
+      .when('JSONP', /test/)
+      .respond({});
+
+    mediaWikiFactory
+      .getImage('test')
+      .then(
+        function(data) {
+          expect(data).to.eql({});
+          done();
+        });
+    $httpBackend.flush();
+  });
+
+  it('should check function getImage with test id and return empty array', function(done) {
     $httpBackend
       .when('JSONP', /test/)
       .respond(getResponseHttpObj());

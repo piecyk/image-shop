@@ -34,7 +34,7 @@ function cartStore(dispatcher, localStorage) {
     imageHelper.add(value);
     self.toStorage();
   };
-  
+
   self.remove = function(value) {
     imageHelper.remove(value);
     self.toStorage();

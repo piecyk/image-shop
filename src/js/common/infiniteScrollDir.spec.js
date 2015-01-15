@@ -9,7 +9,7 @@ describe('common:directive:infiniteScrollDir', function () {
 
   beforeEach(function (){
     angular.mock.module('templates', 'common');
-    angular.mock.inject(function($controller, _$rootScope_, _$compile_, _$document_, _$window_) {
+    angular.mock.inject(function(_$rootScope_, _$compile_, _$document_, _$window_) {
       $rootScope = _$rootScope_.$new();
       $compile = _$compile_;
       $document = _$document_;

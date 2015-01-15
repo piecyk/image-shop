@@ -23,6 +23,14 @@ function Config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
       template: '<div images-search-dir></div>'
     })
 
+  // show image
+    .state('showImage', {
+      url: '/image/:id',
+      template: function ($stateParams) {
+        return '<div class="center-it" image-id="'+ $stateParams.id +'" show-image-dir></div>';
+      }
+    })
+
   // cart checkout wizard
     .state('cart', {
       abstract: true,
@@ -33,7 +41,7 @@ function Config($compileProvider, $httpProvider, $stateProvider, $urlRouterProvi
   // nested states
   // each of these sections will have their own view
 
-   .state('cart.list', {
+    .state('cart.list', {
       url: '/list',
       template: '<div list="cart.cartStore.map" type="cart" images-dir></div>'
     })

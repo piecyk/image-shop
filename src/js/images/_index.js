@@ -11,3 +11,5 @@ require('./mediaWikiFactory');
 require('./imageOnLoadDir');
 require('./imagesSearchDir');
 require('./imagesSearchCtrl');
+
+require('./showImageDir');

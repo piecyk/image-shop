@@ -13,7 +13,7 @@ describe('common:directive:keepScrollDir', function () {
         .state('search', {})
         .state('cart', {});
     });
-    angular.mock.inject(function($controller, _$rootScope_, _$compile_, _$state_, _$window_, _$timeout_) {
+    angular.mock.inject(function(_$rootScope_, _$compile_, _$state_, _$window_, _$timeout_) {
       $rootScope = _$rootScope_.$new();
       $compile = _$compile_;
       $state = _$state_;
